@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Miss You Aditi 💕</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f8e6ff;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    /* Floating hearts background */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        transform: rotate(45deg);
+        animation: float 6s infinite ease-in;
+        opacity: 0.7;
+    }
+    .heart:before, .heart:after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        border-radius: 50%;
+    }
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { left: -10px; top: 0; }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(45deg); opacity: 0.9; }
+        100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+
+    /* QUIZ CARD */
+    #quizCard {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        width: 350px;
+        text-align: center;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        transition: 0.5s;
+    }
+    #quizCard h2 {
+        color: #b020ff;
+    }
+    .option {
+        background: #f1d4ff;
+        padding: 12px;
+        margin: 10px;
+        border-radius: 14px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .option:hover {
+        background: #e5b3ff;
+    }
+
+    /* LIQUID REVEAL */
+    #reveal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffccf2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        font-weight: bold;
+        color: white;
+        letter-spacing: 3px;
+        opacity: 0;
+        pointer-events: none;
+        animation: none;
+        clip-path: circle(0% at center);
+    }
+
+    @keyframes liquidReveal {
+        0% { clip-path: circle(0% at center); opacity: 1; }
+        100% { clip-path: circle(150% at center); opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts -->
+<script>
+for (let i=0; i<40; i++){
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.animationDelay = Math.random()*5 + "s";
+    h.style.scale = (Math.random()*1.5 + 0.5);
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- QUIZ -->
+<div id="quizCard">
+    <h2>💕 Small Quiz for Aditi 💕</h2>
+    <p>How much do you think she is missed?</p>
+
+    <div class="option" onclick="finishQuiz()">A lot 🥺</div>
+    <div class="option" onclick="finishQuiz()">Too much 💗</div>
+    <div class="option" onclick="finishQuiz()">More than words can say 🌸</div>
+</div>
+
+<!-- REVEAL MESSAGE -->
+<div id="reveal">I miss u Aditi 💕</div>
+
+<script>
+function finishQuiz() {
+    document.getElementById("quizCard").style.transform = "scale(0)";
+    document.getElementById("quizCard").style.opacity = "0";
+
+    setTimeout(() => {
+        let reveal = document.getElementById("reveal");
+        reveal.style.animation = "liquidReveal 2s ease-out forwards";
+    }, 600);
+}
+</script>
+
+</body>
+</html>
